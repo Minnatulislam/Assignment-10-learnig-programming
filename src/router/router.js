@@ -17,34 +17,36 @@ import PrivateRoter from "./PrivateRouter/PrivateRoter";
 
 
 export const router = createBrowserRouter([
-    {path:'/', element: <Main></Main>, errorElement: <ErrorPage />, children:[
+  {
+    path: '/', element: <Main></Main>, errorElement: <ErrorPage />, children: [
 
-      {path:'/', element:<Home></Home>},
-      {path:'/courses', element:<Courses></Courses>},
-      {path:'/faq', element:<FAQ></FAQ>},
-      {path:'/blog', element:<Blog></Blog>},
-      {path:'/register', element:<Register></Register>},
-      {path:"/login", element:<Login></Login>},
-
-      {
-        path: '/details/:id', element:  <Details></Details> ,
-
-        loader: ({ params }) => fetch(`https://programming-server-site.vercel.app/courses/${params.id}`)
-    },
+      { path: '/', element: <Home></Home> },
+      { path: '/courses', element: <Courses></Courses> },
+      { path: '/faq', element: <FAQ></FAQ> },
+      { path: '/blog', element: <Blog></Blog> },
+      { path: '/register', element: <Register></Register> },
+      { path: "/login", element: <Login></Login> },
 
       {
-          path:'/checkout/:id', element: <PrivateRoter> <Checkout></Checkout> </PrivateRoter>,
-          loader: ({ params }) => fetch(`https://programming-server-site.vercel.app/courses/${params.id}`)
-        },
+        path: '/details/:id', element: <Details></Details>,
 
-    
-        
+        loader: ({ params }) => fetch(`https://server-site-programming-minnatulislam.vercel.app/${params.id}`)
+      },
 
-      
+      {
+        path: '/checkout/:id', element: <PrivateRoter> <Checkout></Checkout> </PrivateRoter>,
+        loader: ({ params }) => fetch(`https://server-site-programming-minnatulislam.vercel.app/${params.id}`)
+      },
 
-  
-        
 
-      
-    ]}
+
+
+
+
+
+
+
+
+    ]
+  }
 ])
